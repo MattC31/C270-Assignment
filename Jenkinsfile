@@ -6,7 +6,6 @@ pipeline {
     stages {
         stage('Build docker image') {
             steps {  
-		sh 'sudo docker container prune -f'
                 sh 'sudo docker build . -t mpc31/simple_server:latest .'
             }
         }
