@@ -6,12 +6,13 @@ pipeline {
     stages {
         stage('Build docker image') {
             steps {  
-                sh 'docker build . -t mpc31/simple_server:latest .'
+				sh 'sudo docker container prune -f'
+                sh 'sudo docker build . -t mpc31/simple_server:latest .'
             }
         }
         stage('Run docker image') {
             steps {  
-                sh 'docker run -p 8000:8000 mpc31/simple_server:latest .'
+                sh 'sudo docker run -p 8000:8000 mpc31/simple_server:latest .'
             }
         }
         stage('login to dockerhub') {
@@ -21,13 +22,13 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push mpc31/simple_server:latest'
+                sh 'sudo docker push mpc31/simple_server:latest'
             }
         }
 }
 post {
         always {
-            sh 'docker logout'
+            sh 'sudo docker logout'
         }
     }
 }
