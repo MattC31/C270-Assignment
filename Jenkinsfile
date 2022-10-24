@@ -6,7 +6,7 @@ pipeline {
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/MattC31/C270-Assignment.git']]])'
+            git 'https://github.com/MattC31/C270-Assignment'
             }
         }
 
