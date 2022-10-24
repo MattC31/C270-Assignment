@@ -3,16 +3,10 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub-mpc31')
     }
-    stages { 
-        stage('SCM Checkout') {
-            steps{
-            git 'https://github.com/MattC31/C270-Assignment'
-            }
-        }
-
+    stages {
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t mpc31/simple_server:latest .'
+                sh 'docker build . -t mpc31/simple_server:latest .'
             }
         }
         stage('Run docker image') {
