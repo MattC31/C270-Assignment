@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server_deployment
+  labels:
+    app: mpc31/simple_server
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mpc31/simple_server
+  template:
+    metadata:
+      labels:
+        app: mpc31/simple_server
+    spec:
+      containers:
+      - name: simple_server
+        image: mpc31/simple_server:latest
+        ports:
+        - containerPort: 8000
