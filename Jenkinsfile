@@ -7,7 +7,7 @@ node {
     }
 
     stage('Build image') {
-        app = docker.pull("mpc31/simple_server:latest")
+        sh sudo docker pull mpc31/simple_server:latest
     }
 
     stage('Test image') {
