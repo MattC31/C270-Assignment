@@ -15,6 +15,11 @@ pipeline {
                 sh 'docker build -t mpc31/simple_server:latest .'
             }
         }
+        stage('Run docker image') {
+            steps {  
+                sh 'docker run -p 8000:8000 mpc31/simple_server:latest .'
+            }
+        }
         stage('login to dockerhub') {
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
