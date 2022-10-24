@@ -7,7 +7,8 @@ node {
     }
 
     stage('Build image') {
-        sh sudo docker pull mpc31/simple_server:latest
+		steps{
+        sh 'sudo docker pull mpc31/simple_server:latest'}
     }
 
     stage('Test image') {
