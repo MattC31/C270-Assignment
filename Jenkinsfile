@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'maven:3.8.6-openjdk-11-slim' } }
+    agent { docker { image 'mpc31/simple_server:latest' } }
     stages {
         stage('build') {
             steps {
-                sh 'sudo mvn --version'
+                sh 'echo $(hello-world)'
             }
         }
     }
